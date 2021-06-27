@@ -116,10 +116,24 @@
                 </div>
             </div>
         </div>
+        <script th:src="@{/starrr.js}"></script>
+        <link th:href="@{/css/starrr.css}" rel="stylesheet">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+
         <script>
             $(document).ready(function(e){
+                var grade = 0;
+                var mno = [[${dto.mno}]];
 
+                $('.starrr').starrr({
+                    rating: grade,
+                    change: function(e, value) {
+                        if(value) grade = value;
+                    }
+                })
             });
+
+            $(".reviewModal").modal("show");
         </script>
     </th:block>
 </th:block>

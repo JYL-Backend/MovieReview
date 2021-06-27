@@ -30,7 +30,7 @@ public class ReviewController {
     public ResponseEntity<Long> addReview(@RequestBody ReviewDTO movieReviewDTO){
         Long reviewnum = reviewService.register(movieReviewDTO);
 
-        return new ResponseEntity<>(reviewnum,, HttpStatus.OK);
+        return new ResponseEntity<>(reviewnum, HttpStatus.OK);
     }
 
     @PutMapping("/{mno}/{reviewnum}")
