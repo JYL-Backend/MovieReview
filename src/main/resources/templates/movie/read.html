@@ -25,7 +25,7 @@
         <!-- 이미지 영역 평점 -->
         <div class="uploadResult">
             <ul>
-                <li th:each="movieImage: ${dto.imageDTOList}">
+                <li th:each="movieImage: ${dto.imageDTOList}" th:data-file="${movieImage.getThumbnailURL()}">
                     <img th:if="${movieImage.path != null}" th:src="|/display?fileName=${movieImage.getThumbnailURL()}|">
                 </li>
             </ul>
@@ -271,6 +271,16 @@
                     });
                     reviewModal.modal('hide');
                 })
+
+                /* 섬네일 클릭 시 원본 이미지 Modal */
+                $(".uploadResult li").click(function(){
+                   var file = $(this).data('file');
+                   console.log(file);
+
+                   $('.imageModal .modal-body').html("<img style='width:100%' src='/display?fileName="+file+"&size=1'>");
+
+                   $('.imageModal').modal("show");
+                });
             });
 
             $(".reviewModal").modal("show");
